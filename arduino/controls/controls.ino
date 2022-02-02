@@ -1,19 +1,22 @@
 #include <MCP23S17.h>
 
 #define NVALVES 16
-#define BUFFER 500
+#define BUFFER 1000
 
+int pins[NVALVES] = {11, 13, 6, 13, 13, 4, 3, 12, 8, 10, 5, 13, 2, 7, 13, 9};
+
+MCP23S17 io(&SPI, 10, 0);
 char command[BUFFER];
 int i = 0;
-int pins[NVALVES] = {11, 13, 6, 13, 13, 4, 3, 12, 8, 10, 5, 13, 2, 7, 13, 9};
 
 void setup()
 {
   Serial.begin(9600);
-  for (int i = 0; i < 14; i++)
+  io.begin();
+  for (int i = 0; i < NVALVES; i++)
   {
-    pinMode(i, OUTPUT);
-    digitalWrite(i, HIGH);
+    io.pinMode(i, OUTPUT);
+    io.digitalWrite(i, HIGH);
   }
 }
 
@@ -44,11 +47,11 @@ void loop()
           int pin = pins[j - 1];
           if (command[j] == '1')
           {
-            digitalWrite(pin, LOW);
+            io.digitalWrite(i, LOW);
           }
           else
           {
-            digitalWrite(pin, HIGH);
+            io.digitalWrite(i, HIGH);
           }
         }
       }
