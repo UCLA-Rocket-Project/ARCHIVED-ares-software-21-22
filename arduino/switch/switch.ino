@@ -4,7 +4,8 @@
 #include <MCP23017.h>
 
 const char* ssid = "URP_AP_2.4G";
-String server_name = "http://192.168.0.99:5000/";
+//String server_name = "http://192.168.0.99:5000/";
+String server_name = "http://192.168.0.98:5000/";
 unsigned long delay_time = 500;
 unsigned long last_time = 0;
 uint8_t la;
