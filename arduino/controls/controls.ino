@@ -3,7 +3,7 @@
 #define NVALVES 16
 #define BUFFER 1000
 
-int pins[NVALVES] = {11, 13, 6, 13, 13, 4, 3, 12, 8, 10, 5, 13, 2, 7, 13, 9};
+int pins[NVALVES] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
 MCP23S17 io(&SPI, 10, 0);
 char command[BUFFER];
